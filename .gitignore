@@ -17,3 +17,6 @@ config.ini
 .settings/*
 .pydevproject
 
+#Ignore pytddmon
+pytddmon.*
+
