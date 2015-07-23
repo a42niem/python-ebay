@@ -52,7 +52,8 @@ class TestFindingApi(unittest.TestCase):
     def test_findItemsByKeywords(self):
         result = findItemsByKeywords(
                         keywords=keywords,
-                        affiliate=affiliate, \                       buyerPostalCode=buyerPostalCode, \
+                        affiliate=affiliate, \
+                        buyerPostalCode=buyerPostalCode, \
                       paginationInput=paginationInput, \
                       sortOrder=sortOrder, \
                       aspectFilter=aspectFilter, \
@@ -76,11 +77,11 @@ class TestFindingApi(unittest.TestCase):
                       buyerPostalCode=buyerPostalCode, \
                       sortOrder=sortOrder, \
                       paginationInput = paginationInput, \
-                       spectFilter=aspectFilter, \
-                        dainFilter=domainFilter, \
-                        iteilter=itemFilter, \
-                        outpuelector=outputSelector, \
-                        encodinencoding)
+                      aspectFilter=aspectFilter, \
+                      domainFilter=domainFilter, \
+                      itemFilter=itemFilter, \
+                      outputSelector=outputSelector, \
+                      encoding=encoding)
 #        print result
         root = etree.fromstring(result)
         ack = root.find("{http://www.ebay.com/marketplace/search/v1/services}ack").text
@@ -93,17 +94,17 @@ class TestFindingApi(unittest.TestCase):
     def test_findItemsAdvanced(self):
         result = findItemsAdvanced(
                       keywords=keywords, \
-                      categoryId=tegoryId, \
+                      categoryId=categoryId, \
                       affiliate=affiate, \
-                      buyerPostalCodeuyerPostalCode, \
-                      paginationInput= ginationInput, \
-                      sortOrder=sortOrder\
-                      aspectFilter=aspectFier, \
-                      domainFilter=domainFilt, \
+                      buyerPostalCode=buyerPostalCode, \
+                      paginationInput = paginationInput, \
+                      sortOrder=sortOrder, \
+                      aspectFilter=aspectFilter, \
+                      domainFilter=domainFilter, \
                       itemFilter=itemFilter, \
-                    outputSelector=outputSelect, \
+                      outputSelector=outputSelector, \
                       encoding=encoding)
-#        pnt result
+#        print result
         root = etree.fromstring(result)
         ack = root.find("{http://www.ebay.com/marketplace/search/v1/services}ack").text
         self.assertEqual(ack, "Success")
@@ -117,13 +118,14 @@ class TestFindingApi(unittest.TestCase):
                        keywords=keywords, \
                        productId=productId, \
                      affiliate=affiliate, \
-                     buyerPostalCode=buyerPostalCode, \                      paginationInput= paginationInput, \
+                     buyerPostalCode=buyerPostalCode, \
+                     paginationInput = paginationInput, \
                      sortOrder=sortOrder, \
                      itemFilter=itemFilter, \
                      outputSelector=outputSelector, \
                      encoding=encoding)
 #        print result
-      root = etree.fromstring(result)
+        root = etree.fromstring(result)
         ack = root.find("{http://www.ebay.com/marketplace/search/v1/services}ack").text
         self.assertEqual(ack, "Failure") 
 

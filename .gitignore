@@ -12,6 +12,7 @@ dashboard/
 
 #Ignore files with secret keys
 config.ini
+config.apikey
 
 #Ignore Eclipse project files
 .project

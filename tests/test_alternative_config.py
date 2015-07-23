@@ -22,6 +22,7 @@ configuration file is lost.
 '''
 from os import system
 from os.path import join, dirname, abspath
+from sys import platform as _platform
 import unittest
 from lxml import etree
 
@@ -42,7 +43,13 @@ encoding = "XML"
 std_conf = relative("../ebay/config.ini")
 std_conf_back = relative("../ebay/config.ini.bak")
 alt_conf = relative("../config.apikey")
-        
+
+# Handle spaces in Path (Windows)
+if _platform == "win32":
+    std_conf = '"' + std_conf + '"'
+    std_conf_back = '"' + std_conf_back + '"'
+    alt_conf = '"' + alt_conf + '"'
+       
 
 class TestAlternativeConfig(unittest.TestCase):
 
