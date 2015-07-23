@@ -42,13 +42,15 @@ encoding = "XML"
 #File paths
 std_conf = relative("../ebay/config.ini")
 std_conf_back = relative("../ebay/config.ini.bak")
-alt_conf = relative("../config.apikey")
+alt_conf = set_alt_conf = relative("../config.apikey")
+ls_command = "ls "
 
 # Handle spaces in Path (Windows)
 if _platform == "win32":
     std_conf = '"' + std_conf + '"'
     std_conf_back = '"' + std_conf_back + '"'
     alt_conf = '"' + alt_conf + '"'
+    ls_command = "dir "
        
 
 class TestAlternativeConfig(unittest.TestCase):
@@ -63,12 +65,12 @@ class TestAlternativeConfig(unittest.TestCase):
         #Move initialization file to nonstandard location
         system("mv " + std_conf + " " + alt_conf)
         #Look where the initialization files really are
-        system("ls " + std_conf)
-        system("ls " + std_conf_back)
-        system("ls " + alt_conf)
+        system(ls_command + std_conf)
+        system(ls_command + std_conf_back)
+        system(ls_command + alt_conf)
         
         #Set alternative initialization file
-        set_config_file(alt_conf)
+        set_config_file(set_alt_conf)
         
         #Use the library and test if it works
         result = findItemsByKeywords(keywords=keywords, 
@@ -80,14 +82,13 @@ class TestAlternativeConfig(unittest.TestCase):
         
         #Move initialization file back to original location
         system("mv " + alt_conf + " " + std_conf)
- 
 
     def test_regular_config(self):
         "Test the library with the regular configuration file."
         #Look where the initialization files really are
-        system("ls " + std_conf)
-        system("ls " + std_conf_back)
-        system("ls " + alt_conf)      #should not exist
+        system(ls_command + std_conf)
+        system(ls_command + std_conf_back)
+        system(ls_command + alt_conf)      #should not exist
         
         #Use the library and test if it works
         result = findItemsByKeywords(keywords=keywords, 
