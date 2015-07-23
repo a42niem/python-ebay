@@ -1,5 +1,6 @@
 build/
 dist/
+dashboard/
 .idea/
 *.ini
 *.egg-info
