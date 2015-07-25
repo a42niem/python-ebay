@@ -143,6 +143,7 @@ class TestFindingApi(unittest.TestCase):
                         itemFilter=itemFilter, \
                         outputSelector=outputSelector, \
                         encoding=encoding)
+#        print result                        
         root = etree.fromstring(result)
         ack = root.find("{http://www.ebay.com/marketplace/search/v1/services}ack").text
         self.assertEqual(ack, "Success")
