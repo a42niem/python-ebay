@@ -95,7 +95,7 @@ class TestFindingApi(unittest.TestCase):
         result = findItemsAdvanced(
                       keywords=keywords, \
                       categoryId=categoryId, \
-                      affiliate=affiate, \
+                      affiliate=affiliate, \
                       buyerPostalCode=buyerPostalCode, \
                       paginationInput = paginationInput, \
                       sortOrder=sortOrder, \
@@ -132,17 +132,17 @@ class TestFindingApi(unittest.TestCase):
 
     def test_findItemsIneBayStores(self):
         result = findItemsIneBayStores(
-                          keywords=keywords, \
-                          storeName=storeName, \
+                        keywords=keywords, \
+                        storeName=storeName, \
                         affiliate=affiliate, \
                         buyerPostalCode=buyerPostalCode, \
                         paginationInput=paginationInput, \
                         sortOrder=sortOrder, \
-                          asctFilter=aspectFilter, \
+                        aspectFilter=aspectFilter, \
                         domainFilter=domainFilter, \
-                          emFilter=itemFilter, \
-                          outputlector=outputSelector, \
-                          encoding=encoding)
+                        itemFilter=itemFilter, \
+                        outputSelector=outputSelector, \
+                        encoding=encoding)
         root = etree.fromstring(result)
         ack = root.find("{http://www.ebay.com/marketplace/search/v1/services}ack").text
         self.assertEqual(ack, "Success")
