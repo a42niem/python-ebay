@@ -23,7 +23,8 @@ class TestMerchandisingApi(unittest.TestCase):
 
     def test_getRelatedCategoryItems(self):
         result = getRelatedCategoryItems(affiliate=None,
-                                         maxResults=None, \                                        categoryId=None, \
+                                         maxResults=None, \
+                                         categoryId=None, \
                                        itemFilter=None, \
                                        itemId=None, \
                                        encoding="XML")
