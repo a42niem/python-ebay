@@ -39,7 +39,7 @@ class TestMerchandisingApi(unittest.TestCase):
         result = getSimilarItems(affiliate=None, \
                       maxResults=None, \
                       categoryId=None, \
-                      categoryIdExclude=None, \
+                      categoryIdExclude=[], \
                       endTimeFrom=None, \
                       endTimeTo=None, \
                       itemFilter=None, \
@@ -47,6 +47,8 @@ class TestMerchandisingApi(unittest.TestCase):
                       listingType=None, \
                       maxPrice=None, \
                       encoding="XML")
+        print result
+#        The problem is that the service is expecting an itemId, "string - The ID of an active item listing or a listing that has ended less than two weeks ago.Max length: 19."
         root = objectify.fromstring(result)
         ack = root.ack.text
         self.assertEqual(ack, "Success")
