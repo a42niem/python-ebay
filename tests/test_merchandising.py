@@ -4,6 +4,7 @@ from lxml import objectify
 from ebay.merchandising import *
 
 keywords = "ipod"
+categoryId = "73839" #iPods & MP3 Players #
 
 
 class TestMerchandisingApi(unittest.TestCase):
@@ -24,11 +25,11 @@ class TestMerchandisingApi(unittest.TestCase):
     def test_getRelatedCategoryItems(self):
         result = getRelatedCategoryItems(affiliate=None,
                                        maxResults=None, \
-                                       categoryId=None, \
+                                       categoryId=categoryId, \
                                        itemFilter=None, \
                                        itemId=None, \
                                        encoding="XML")
-        print result
+#        print result
         root = objectify.fromstring(result)
         ack = root.ack.text
         self.assertEqual(ack, "Success")
