@@ -26,7 +26,7 @@ def getUserCases(caseStatusFilter=None,
     if caseTypeFilter:
         caseTypeFilter_elem = etree.SubElement(root, "caseTypeFilter")
         for case_type in caseTypeFilter:
-            caseType_elem = etree.SubElement(caseStatusFilter_elem, "caseType")
+            caseType_elem = etree.SubElement(caseTypeFilter_elem, "caseType")
             caseType_elem.text = case_type
 
     if creationDateRangeFilterFrom and creationDateRangeFilterTo:
