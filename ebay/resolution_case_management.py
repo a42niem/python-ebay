@@ -13,7 +13,7 @@ def getUserCases(caseStatusFilter=None,
                  sortOrder=None,
                  encoding="JSON"):
     root = etree.Element("getUserCasesRequest",
-                         xmlns="http://www.ebay.com/marketplace/search/v1/services")
+                         xmlns="http://www.ebay.com/marketplace/resolution/v1/services")
 
     #caseStatusFilter is a List
     if caseStatusFilter:
@@ -63,7 +63,7 @@ def getUserCases(caseStatusFilter=None,
 
 def getEBPCaseDetail(caseId, caseType, encoding="JSON"):
     root = etree.Element("getEBPCaseDetailRequest",
-                         xmlns="http://www.ebay.com/marketplace/search/v1/services")
+                         xmlns="http://www.ebay.com/marketplace/resolution/v1/services")
 
     caseId_elem = etree.SubElement(root, "caseId")
     id_elem = etree.SubElement(caseId_elem, "id")
@@ -78,7 +78,7 @@ def getEBPCaseDetail(caseId, caseType, encoding="JSON"):
 # Seller Option Calls
 def provideTrackingInfo(caseId, caseType, carrierUsed, trackingNumber, comments=None, encoding="JSON"):
     root = etree.Element("provideTrackingInfoRequest",
-                         xmlns="http://www.ebay.com/marketplace/search/v1/services")
+                         xmlns="http://www.ebay.com/marketplace/resolution/v1/services")
 
     caseId_elem = etree.SubElement(root, "caseId")
     id_elem = etree.SubElement(caseId_elem, "id")
@@ -102,7 +102,7 @@ def provideTrackingInfo(caseId, caseType, carrierUsed, trackingNumber, comments=
 
 def issueFullRefund(caseId, caseType, comments=None, encoding="JSON"):
     root = etree.Element("issueFullRefundRequest",
-                         xmlns="http://www.ebay.com/marketplace/search/v1/services")
+                         xmlns="http://www.ebay.com/marketplace/resolution/v1/services")
 
     caseId_elem = etree.SubElement(root, "caseId")
     id_elem = etree.SubElement(caseId_elem, "id")
@@ -138,7 +138,7 @@ def offerOtherSolution(caseId, caseType, messageToBuyer, encoding="JSON"):
 def escalateToCustomerSuppport(caseId, caseType, escalationReason,
                                comments=None, encoding="JSON"):
     root = etree.Element("escalateToCustomerSuppportRequest",
-                         xmlns="http://www.ebay.com/marketplace/search/v1/services")
+                         xmlns="http://www.ebay.com/marketplace/resolution/v1/services")
 
     caseId_elem = etree.SubElement(root, "caseId")
     id_elem = etree.SubElement(caseId_elem, "id")
@@ -163,7 +163,7 @@ def escalateToCustomerSuppport(caseId, caseType, escalationReason,
 def appealToCustomerSupport(caseId, caseType, appealReason,
                             comments=None, encoding="JSON"):
     root = etree.Element("appealToCustomerSupportRequest",
-                         xmlns="http://www.ebay.com/marketplace/search/v1/services")
+                         xmlns="http://www.ebay.com/marketplace/resolution/v1/services")
 
     caseId_elem = etree.SubElement(root, "caseId")
     id_elem = etree.SubElement(caseId_elem, "id")
@@ -185,7 +185,7 @@ def appealToCustomerSupport(caseId, caseType, appealReason,
 # Metadata calls
 def getActivityOptions(caseId, caseType, encoding="JSON"):
     root = etree.Element("getActivityOptionsRequest",
-                         xmlns="http://www.ebay.com/marketplace/search/v1/services")
+                         xmlns="http://www.ebay.com/marketplace/resolution/v1/services")
 
     caseId_elem = etree.SubElement(root, "caseId")
     id_elem = etree.SubElement(caseId_elem, "id")
@@ -199,7 +199,7 @@ def getActivityOptions(caseId, caseType, encoding="JSON"):
 
 def getVersion(encoding="JSON"):
     root = etree.Element("getVersionRequest",
-                         xmlns="http://www.ebay.com/marketplace/search/v1/services")
+                         xmlns="http://www.ebay.com/marketplace/resolution/v1/services")
 
     request = etree.tostring(root, pretty_print=True)
     return get_response(getVersion.__name__, request, encoding)
